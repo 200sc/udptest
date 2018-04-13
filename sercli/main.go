@@ -35,7 +35,7 @@ func main() {
 			if err != nil {
 				fmt.Println(msg, err)
 			}
-			time.Sleep(time.Second * 1)
+			time.Sleep(time.Second * 20)
 		}
 	}()
 	buf := make([]byte, 1024)
@@ -57,7 +57,7 @@ func listenConn() (*net.UDPConn, error) {
 		return nil, err
 	}
 
-	cnn, err := net.DialUDP("udp", nil, addr)
+	cnn, err := net.ListenUDP("udp", addr)
 	return cnn, err
 }
 
@@ -67,5 +67,5 @@ func broadcastConn() (*net.UDPConn, error) {
 		return nil, err
 	}
 
-	return net.ListenUDP("udp", addr)
+	return net.DialUDP("udp", nil, addr)
 }
