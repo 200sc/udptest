@@ -28,9 +28,9 @@ func main() {
 	go func() {
 		for {
 			msg := strconv.Itoa(i)
+			fmt.Println("Sending", i)
 			i++
 			buf := []byte(msg)
-			fmt.Println("Sending", i)
 			_, err := bcst.Write(buf)
 			if err != nil {
 				fmt.Println(msg, err)
