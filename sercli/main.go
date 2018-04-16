@@ -67,5 +67,10 @@ func broadcastConn() (*net.UDPConn, error) {
 		return nil, err
 	}
 
-	return net.DialUDP("udp", nil, addr)
+	laddr, err := net.ResolveUDPAddr("udp", ":10002")
+	if err != nil {
+		return nil, err
+	}
+
+	return net.DialUDP("udp", laddr, addr)
 }
