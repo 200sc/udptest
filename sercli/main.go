@@ -52,7 +52,7 @@ func main() {
 }
 
 func listenConn() (*net.UDPConn, error) {
-	addr, err := net.ResolveUDPAddr("udp", ":10001")
+	addr, err := net.ResolveUDPAddr("udp", ":7463")
 	if err != nil {
 		return nil, err
 	}
@@ -62,12 +62,12 @@ func listenConn() (*net.UDPConn, error) {
 }
 
 func broadcastConn() (*net.UDPConn, error) {
-	addr, err := net.ResolveUDPAddr("udp", "255.255.255.255:10001")
+	addr, err := net.ResolveUDPAddr("udp", "255.255.255.255:7463")
 	if err != nil {
 		return nil, err
 	}
 
-	laddr, err := net.ResolveUDPAddr("udp", ":10002")
+	laddr, err := net.ResolveUDPAddr("udp", ":7464")
 	if err != nil {
 		return nil, err
 	}
